@@ -40,7 +40,13 @@ form.on("submit",runEnter);
 function runEnter() {
 
     // // Prevent the page from refreshing
-    // d3.event.preventDefault();
+    d3.event.preventDefault();
+
+    // Then, select the unordered list element by class name
+    // var list = d3.select("tr");
+
+    // remove any children from the list to
+    //  list.html("");
      
     // Select the input element and get the raw HTML node
     var inputElement = d3.select("#datetime");
@@ -50,10 +56,7 @@ function runEnter() {
     var inputValue = inputElement.property("value");
     console.log(inputValue);
     
-    // var tableData = data;
-    // console.log(tableData);
-
-   // Filter the data based on user input
+    // Filter the data based on user input
     var filteredData = startData.filter(item => item.datetime === inputValue);
     console.log(filteredData);
 
@@ -83,7 +86,21 @@ function runEnter() {
       //   });
       // });
 
-
+    // data.forEach((filteredData) => {
+    //       var row = tbody.replace("tr");
+    //       Object.entries(filteredData).forEach(([key, value]) => {
+    //         var cell = row.replace("td");
+    //         cell.text(value);
+    //       });
+    //     });
   }
+
+    data.forEach((filteredData) => {
+      var row = tbody.filter("tr");
+      Object.entries(filteredData).forEach(([key, value]) => {
+        var cell = row.filter("td");
+        cell.text(value);
+      });
+  });
 
   
