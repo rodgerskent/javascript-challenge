@@ -1,3 +1,6 @@
+// Start Fresh
+// tbody.html("");
+
 // from data.js
 var startData = data;
 // var filteredData = []
@@ -17,20 +20,12 @@ data.forEach((startData) => {
     });
   });
 
-// // Insert the starting (unfiltered) data into a table
-// data.forEach((filteredData) => {
-//   var row = tbody.append("tr");
-//   Object.entries(filteredData).forEach(([key, value]) => {
-//     var cell = row.append("td");
-//     cell.text(value);
-//   });
-// });
-
 // Select the button
 var button = d3.select("#filter-btn");
 
 // Select the form
-var form = d3.select("#datetime");
+// var form = d3.select("#datetime");
+var form = d3.select("form");
 
 // Create event handlers for clicking the button or pressing the enter key
 button.on("click", runEnter);
@@ -46,7 +41,7 @@ function runEnter() {
     // var list = d3.select("tr");
 
     // remove any children from the list to
-    //  list.html("");
+   
      
     // Select the input element and get the raw HTML node
     var inputElement = d3.select("#datetime");
@@ -55,52 +50,20 @@ function runEnter() {
     // Get the value property of the input element
     var inputValue = inputElement.property("value");
     console.log(inputValue);
-    
-    // Filter the data based on user input
-    var filteredData = startData.filter(item => item.datetime === inputValue);
-    console.log(filteredData);
 
-    // var startData = filteredData
-
-    // data.forEach((startData !== filteredData) => {
-    //   var row = tbody.remove("tr");
-    //   Object.entries(startData !== filteredData).forEach(([key, value]) => {
-    //     var cell = row.remove("td");
-    //     cell.text(value);
-    //   });
-    // });
-
-    // data.forEach((filteredData) => {
-    //     var row = tbody.append("tr");
-    //     Object.entries(filteredData).forEach(([key, value]) => {
-    //       var cell = row.append("td");
-    //       cell.text(value);
-    //     });
-    //   });
-    
-      // data.forEach((filteredData) => {
-      //   var row = tbody.replaceWith("tr");
-      //   Object.entries(filteredData).forEach(([key, value]) => {
-      //     var cell = row.replaceWith("td");
-      //     cell.text(value);
-      //   });
-      // });
-
-    // data.forEach((filteredData) => {
-    //       var row = tbody.replace("tr");
-    //       Object.entries(filteredData).forEach(([key, value]) => {
-    //         var cell = row.replace("td");
-    //         cell.text(value);
-    //       });
-    //     });
-  }
-
-    data.forEach((filteredData) => {
-      var row = tbody.filter("tr");
-      Object.entries(filteredData).forEach(([key, value]) => {
-        var cell = row.filter("td");
-        cell.text(value);
+    // if inputvalue is nan then pass
+    if (inputValue) {
+      tbody.html("");
+      var filteredData = startData.filter(item => item.datetime === inputValue);
+      console.log(filteredData);
+      filteredData.forEach((targetdate) => {
+        var row = tbody.append("tr");
+        Object.entries(targetdate).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
       });
-  });
-
+    }
+       
+  }
   
