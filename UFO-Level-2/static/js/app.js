@@ -1,6 +1,8 @@
+// Start Fresh
+// tbody.html("");
+
 // from data.js
 var startData = data;
-// var filteredData = []
 
 // Console.log the initial data set from data.js
 console.log(startData);
@@ -16,3 +18,110 @@ data.forEach((startData) => {
       cell.text(value);
     });
   });
+
+// Select the button
+var button = d3.select("#filter-btn");
+
+// Select the form
+// var form = d3.select("#datetime");
+var form = d3.select("form");
+
+// Create event handlers for clicking the button or pressing the enter key
+button.on("click", runEnter);
+form.on("submit",runEnter);
+
+// Create the function to run for both events
+function runEnter() {
+    // Clear earlier rows of data
+    // tbody.html("");
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+    
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select("#datetime");
+    // var inputElement2 = d3.select("#city");
+    // var inputElement3 = d3.select("#state");
+    // var inputElement4 = d3.select("#country");
+    // var inputElement5 = d3.select("shape");
+    // var inputElement6 = d3.select("#duration");
+    console.log(inputElement);
+
+    // Get the value property of the input element
+    var inputValue = inputElement.property("value");
+    // var inputValue = inputElement.property("#datetime");
+    // var inputValue2 = inputElement2.property("value");
+    // var inputValue3 = inputElement3.property("value");
+    // var inputValue4 = inputElement4.property("value");
+    // var inputValue5 = inputElement5.property("value");
+    // var inputValue6 = inputElement6.property("value");
+    console.log(inputValue);
+
+    // if inputvalue is nan then pass, otherwise
+    if (inputValue) {
+      tbody.html("");
+      var filteredData = startData.filter(item => item.datetime === inputValue);
+      console.log(filteredData);
+      filteredData.forEach((userinput) => {
+        var row = tbody.append("tr");
+        Object.entries(userinput).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });
+    }
+    // if (inputValue2) {
+    //   // tbody.html("");
+    //   var filteredData = startData.filter(item => item.city === inputValue2);
+    //   console.log(filteredData);
+    //   filteredData.forEach((userinput) => {
+    //     var row = tbody.append("tr");
+    //     Object.entries(userinput).forEach(([key, value]) => {
+    //       var cell = row.append("td");
+    //       cell.text(value);
+    //     });
+    //   });
+    // }
+    
+    // if (inputValue3) {
+    //   // tbody.html("");
+    //   var filteredData = startData.filter(item => item.state === inputValue3);
+    //   console.log(filteredData);
+    //   filteredData.forEach((userinput) => {
+    //     var row = tbody.append("tr");
+    //     Object.entries(userinput).forEach(([key, value]) => {
+    //       var cell = row.append("td");
+    //       cell.text(value);
+    //     });
+    //   });
+    // }      
+    
+    // if (inputValue4) {
+    //   // tbody.html("");
+    //   var filteredData = startData.filter(item => item.country === inputValue4);
+    //   console.log(filteredData);
+    //   filteredData.forEach((userinput) => {
+    //     var row = tbody.append("tr");
+    //     Object.entries(userinput).forEach(([key, value]) => {
+    //       var cell = row.append("td");
+    //       cell.text(value);
+    //     });
+    //   });
+    // }
+    
+    // if (inputValue5) {
+    //   // tbody.html("");
+    //   var filteredData = startData.filter(item => item.shape === inputValue5);
+    //   console.log(filteredData);
+    //   filteredData.forEach((userinput) => {
+    //     var row = tbody.append("tr");
+    //     Object.entries(userinput).forEach(([key, value]) => {
+    //       var cell = row.append("td");
+    //       cell.text(value);
+    //     });
+    //   });
+    // }
+
+
+  }
+  
