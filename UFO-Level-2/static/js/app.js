@@ -41,8 +41,7 @@ function runEnter() {
     var inputElement2 = d3.select("#city");
     var inputElement3 = d3.select("#state");
     var inputElement4 = d3.select("#country");
-    var inputElement5 = d3.select("shape");
-    // var inputElement6 = d3.select("#duration");
+    var inputElement5 = d3.select("#shape");
     console.log(inputElement);
     console.log(inputElement2);
     console.log(inputElement3);
@@ -55,7 +54,6 @@ function runEnter() {
     var istate = inputElement3.property("value");
     var icountry = inputElement4.property("value");
     var ishape = inputElement5.property("value");
-    // var inputValue6 = inputElement6.property("value");
     console.log(idate);
     console.log(icity);
     console.log(istate);
@@ -80,18 +78,27 @@ function runEnter() {
                 });
               });
             }
-            else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate)
+              else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate)
+              console.log(filteredData);
+              filteredData.forEach((userinput) => {
+                var row = tbody.append("tr");
+                Object.entries(userinput).forEach(([key, value]) => {
+                  var cell = row.append("td");
+                  cell.text(value);
+                });
+               });
+          }
+            else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity)
             console.log(filteredData);
             filteredData.forEach((userinput) => {
               var row = tbody.append("tr");
               Object.entries(userinput).forEach(([key, value]) => {
                 var cell = row.append("td");
                 cell.text(value);
-              });
+               });
             });
-          }
         }
-          else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity)
+          else var filteredData = startData.filter(item => item.country === icountry && item.state === istate)
           console.log(filteredData);
           filteredData.forEach((userinput) => {
             var row = tbody.append("tr");
@@ -101,25 +108,16 @@ function runEnter() {
             });
           });
       }
-      else var filteredData = startData.filter(item => item.country === icountry && item.state === istate)
-      console.log(filteredData);
-      filteredData.forEach((userinput) => {
-        var row = tbody.append("tr");
-        Object.entries(userinput).forEach(([key, value]) => {
-          var cell = row.append("td");
-          cell.text(value);
+        else var filteredData = startData.filter(item => item.country === icountry)
+        console.log(filteredData);
+        filteredData.forEach((userinput) => {
+          var row = tbody.append("tr");
+          Object.entries(userinput).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+          });
         });
-      });
-    else var filteredData = startData.filter(item => item.country === icountry)
-    console.log(filteredData);
-    filteredData.forEach((userinput) => {
-       var row = tbody.append("tr");
-       Object.entries(userinput).forEach(([key, value]) => {
-         var cell = row.append("td");
-         cell.text(value);
-       });
-    });
-
+      
 
 }
     
