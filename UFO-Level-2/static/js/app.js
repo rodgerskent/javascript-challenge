@@ -31,7 +31,7 @@ form.on("submit",runEnter);
 // Create the function to run for both events
 function runEnter() {
     // Clear earlier rows of data
-    // tbody.html("");
+    tbody.html("");
 
     // Prevent the page from refreshing
     d3.event.preventDefault();
@@ -63,13 +63,17 @@ function runEnter() {
 
   // Mon 12-28 nested filter
     if (icountry)
-    tbody.html("");
+    // tbody.html("");
       if (icountry && istate) {
+        // tbody.html("");
         if (icountry && istate && icity) {
+          // tbody.html("");
           if (icountry && istate && icity && idate) {
+            // tbody.html("");
             if (icountry && istate && icity && idate && ishape) {
               var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate && item.shape === ishape)
               console.log(filteredData);
+              tbody.html("");
               filteredData.forEach((userinput) => {
                 var row = tbody.append("tr");
                 Object.entries(userinput).forEach(([key, value]) => {
@@ -80,6 +84,7 @@ function runEnter() {
             }
               else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate)
               console.log(filteredData);
+              tbody.html("");
               filteredData.forEach((userinput) => {
                 var row = tbody.append("tr");
                 Object.entries(userinput).forEach(([key, value]) => {
@@ -90,6 +95,7 @@ function runEnter() {
           }
             else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity)
             console.log(filteredData);
+            tbody.html("");
             filteredData.forEach((userinput) => {
               var row = tbody.append("tr");
               Object.entries(userinput).forEach(([key, value]) => {
@@ -100,6 +106,7 @@ function runEnter() {
         }
           else var filteredData = startData.filter(item => item.country === icountry && item.state === istate)
           console.log(filteredData);
+          tbody.html("");
           filteredData.forEach((userinput) => {
             var row = tbody.append("tr");
             Object.entries(userinput).forEach(([key, value]) => {
@@ -110,6 +117,7 @@ function runEnter() {
       }
         else var filteredData = startData.filter(item => item.country === icountry)
         console.log(filteredData);
+        tbody.html("");
         filteredData.forEach((userinput) => {
           var row = tbody.append("tr");
           Object.entries(userinput).forEach(([key, value]) => {
@@ -117,7 +125,8 @@ function runEnter() {
             cell.text(value);
           });
         });
-      
+  
+    
 
 }
     
