@@ -61,7 +61,7 @@ function runEnter() {
     console.log(ishape);
 
 
-  // Mon 12-12 try
+  // Mon 12-28 nested filter
     if (icountry)
     tbody.html("");
       if (icountry && istate) {
