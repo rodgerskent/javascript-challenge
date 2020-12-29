@@ -62,6 +62,7 @@ function runEnter() {
     console.log(idate);    
     console.log(ishape);
 
+     
 
   // Mon 12-28 nested filter
     if (icountry) { 
@@ -86,7 +87,7 @@ function runEnter() {
               });
             }
               else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate)
-              console.log('country first then, state, city and date')
+              console.log('country first then state, city and date')
               console.log(filteredData);
               tbody.html("");
               filteredData.forEach((userinput) => {
@@ -98,7 +99,7 @@ function runEnter() {
                });
           }
             else var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity)
-            console.log('country first then state and city')
+            console.log('country first then state, city')
             console.log(filteredData);
             tbody.html("");
             filteredData.forEach((userinput) => {
@@ -110,7 +111,7 @@ function runEnter() {
             });
         }
           else var filteredData = startData.filter(item => item.country === icountry && item.state === istate)
-          console.log('country first then date')
+          console.log('country first then state')
           console.log(filteredData);
           tbody.html("");
           filteredData.forEach((userinput) => {
@@ -123,6 +124,7 @@ function runEnter() {
       }  
         else var filteredData = startData.filter(item => item.country === icountry)
         console.log(filteredData);
+        console.log('country only')
         tbody.html("");
         filteredData.forEach((userinput) => {
           var row = tbody.append("tr");
@@ -191,8 +193,6 @@ function runEnter() {
             });
           });
       }
-    
-    
         else var filteredData = startData.filter(item => item.state === istate)
         console.log('state first and only')
         console.log(filteredData);
@@ -378,7 +378,7 @@ if (ishape) {
               });
             });
           }
-            else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.city === icity && item.state === istate)
+            else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.state === istate && item.city === icity)
             console.log('shape first then country, state, city')
             console.log(filteredData);
             tbody.html("");
