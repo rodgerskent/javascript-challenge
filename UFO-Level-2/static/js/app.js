@@ -134,15 +134,15 @@ function runEnter() {
     }   
   
   // Mon 12-28 second filter brace
-    if (istate)
+    if (istate) {
     // tbody.html("");
-      if (icity && istate) {
+      if (istate && icity) {
         // tbody.html("");
-        if (idate && istate && icity) {
+        if (istate && icity && idate) {
           // tbody.html("");
-          if (ishape && istate && icity && idate) {
+          if (istate && icity && idate && ishape) {
             // tbody.html("");
-            if (icountry && istate && icity && idate && ishape) {
+            if (istate && icity && idate && ishape && icountry) {
               var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate && item.shape === ishape)
               console.log('state first with all')
               console.log(filteredData);
@@ -192,6 +192,7 @@ function runEnter() {
           });
       }
     
+    
         else var filteredData = startData.filter(item => item.state === istate)
         console.log('state first and only')
         console.log(filteredData);
@@ -203,7 +204,232 @@ function runEnter() {
             cell.text(value);
           });
         });  
+    }
 // End of Mon second brace
+
+
+// Mon 12-28 third filter brace
+  if (icity) {
+  // tbody.html("");
+    if (icity && idate) {
+      // tbody.html("");
+      if (icity && idate && ishape) {
+        // tbody.html("");
+        if (icity && idate && ishape && icountry) {
+          // tbody.html("");
+          if (icity && idate && ishape && icountry && istate) {
+            var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate && item.shape === ishape)
+            console.log('city first with all')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+          }
+            else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.city === icity && item.datetime === idate)
+            console.log('city first then date, shape, country')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+        }
+          else var filteredData = startData.filter(item => item.datetime === idate && item.shape === ishape && item.city === icity)
+          console.log('city first then date, shape')
+          console.log(filteredData);
+          tbody.html("");
+          filteredData.forEach((userinput) => {
+            var row = tbody.append("tr");
+            Object.entries(userinput).forEach(([key, value]) => {
+              var cell = row.append("td");
+              cell.text(value);
+            });
+          });
+      }
+        else var filteredData = startData.filter(item => item.city === icity && item.datetime === idate)
+        console.log('city first then date')
+        console.log(filteredData);
+        tbody.html("");
+        filteredData.forEach((userinput) => {
+          var row = tbody.append("tr");
+          Object.entries(userinput).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+          });
+        });
+    }
+
+      else var filteredData = startData.filter(item => item.city === icity)
+      console.log('city first and only')
+      console.log(filteredData);
+      tbody.html("");
+      filteredData.forEach((userinput) => {
+        var row = tbody.append("tr");
+        Object.entries(userinput).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });  
+  }
+// End of Mon third brace
+
+
+// Tue 12-29 fourth filter brace
+if (idate) {
+  // tbody.html("");
+    if (idate && ishape) {
+      // tbody.html("");
+      if (idate && ishape && icountry) {
+        // tbody.html("");
+        if (idate && ishape && icountry && istate) {
+          // tbody.html("");
+          if (idate && ishape && icountry && istate && icity) {
+            var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate && item.shape === ishape)
+            console.log('date first with all')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+          }
+            else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.datetime === idate && item.state === istate)
+            console.log('date first then shape, country, state')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+        }
+          else var filteredData = startData.filter(item => item.datetime === idate && item.shape === ishape && item.country === icountry)
+          console.log('date first then shape, country')
+          console.log(filteredData);
+          tbody.html("");
+          filteredData.forEach((userinput) => {
+            var row = tbody.append("tr");
+            Object.entries(userinput).forEach(([key, value]) => {
+              var cell = row.append("td");
+              cell.text(value);
+            });
+          });
+      }
+        else var filteredData = startData.filter(item => item.datetime === idate && item.shape === ishape)
+        console.log('date first then shape')
+        console.log(filteredData);
+        tbody.html("");
+        filteredData.forEach((userinput) => {
+          var row = tbody.append("tr");
+          Object.entries(userinput).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+          });
+        });
+    }
+
+      else var filteredData = startData.filter(item => item.datetime === idate)
+      console.log('date first and only')
+      console.log(filteredData);
+      tbody.html("");
+      filteredData.forEach((userinput) => {
+        var row = tbody.append("tr");
+        Object.entries(userinput).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });  
+  }
+// End of Tue fourth brace
+
+
+// Tue 12-29 fifth filter brace
+if (ishape) {
+  // tbody.html("");
+    if (ishape && icountry) {
+      // tbody.html("");
+      if (ishape && icountry && istate) {
+        // tbody.html("");
+        if (ishape && icountry && istate && icity) {
+          // tbody.html("");
+          if (ishape && icountry && istate && icity && idate) {
+            var filteredData = startData.filter(item => item.country === icountry && item.state === istate && item.city === icity && item.datetime === idate && item.shape === ishape)
+            console.log('shape first with all')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+          }
+            else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.city === icity && item.state === istate)
+            console.log('shape first then country, state, city')
+            console.log(filteredData);
+            tbody.html("");
+            filteredData.forEach((userinput) => {
+              var row = tbody.append("tr");
+              Object.entries(userinput).forEach(([key, value]) => {
+                var cell = row.append("td");
+                cell.text(value);
+              });
+            });
+        }
+          else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry && item.state === istate)
+          console.log('shape first then country, state')
+          console.log(filteredData);
+          tbody.html("");
+          filteredData.forEach((userinput) => {
+            var row = tbody.append("tr");
+            Object.entries(userinput).forEach(([key, value]) => {
+              var cell = row.append("td");
+              cell.text(value);
+            });
+          });
+      }
+        else var filteredData = startData.filter(item => item.shape === ishape && item.country === icountry)
+        console.log('shape first then country')
+        console.log(filteredData);
+        tbody.html("");
+        filteredData.forEach((userinput) => {
+          var row = tbody.append("tr");
+          Object.entries(userinput).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+          });
+        });
+    }
+
+      else var filteredData = startData.filter(item => item.shape === ishape)
+      console.log('shape first and only')
+      console.log(filteredData);
+      tbody.html("");
+      filteredData.forEach((userinput) => {
+        var row = tbody.append("tr");
+        Object.entries(userinput).forEach(([key, value]) => {
+          var cell = row.append("td");
+          cell.text(value);
+        });
+      });  
+  }
+// End of Tue fifth brace
+
+
 }
     
     
